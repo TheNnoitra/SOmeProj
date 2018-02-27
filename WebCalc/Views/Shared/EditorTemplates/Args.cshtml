@@ -1,0 +1,38 @@
+﻿@model IEnumerable<double>
+
+@{
+    var items = Model ?? new double[2];
+}
+<div id="ArgsContainer" style="padding:10px;display:inline-block;background-color: orange;">
+    @foreach (var item in items)
+    {
+        @Html.TextBox("[]", item)
+    }
+</div>
+
+<button onclick="AddArgs(); return false;" class="btn btn-info btn-sm">+</button>
+
+<script type="text/javascript">
+    function AddArgs() {
+        var input = $("<input type='text' name='Args[]' />");
+
+        $("#ArgsContainer").append(input);
+    }
+
+    function InputArgs(e) {
+        if (e && e.originalEvent) {
+            var symbol = e.originalEvent.data;
+            if (symbol == " ") {
+                AddArgs();
+
+                var last = $("input[name^=Args]").last();
+                last.focus();
+                last.bind("input", InputArgs);
+            }
+        }
+    }
+
+    setTimeout(function () {
+        $("input[name^=Args]").bind("input", InputArgs)
+    }, 1000);
+</script>

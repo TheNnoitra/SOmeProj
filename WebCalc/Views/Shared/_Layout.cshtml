@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Большое хранилище документов</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Документы", "AllDocs", "MyDocs", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Мои документы<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index", "MyDocs")">Список моих документов</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a data-toggle="modal" data-target="#NewDocumentModal" href="@Url.Action("NewDocument", "MyDocs")">Создать документ</a></li>
+                    </li>
+                    @*<li role="separator" class="divider"></li>
+                    <li><a data-toggle="modal" data-target="#UploadModal" href="@Url.Action("Upload", "MyDocs")">Загрузить документ</a></li>*@
+                </ul>
+                </li>
+                @if (User.Identity.Name == "admin")
+                {
+                    <li>@Html.ActionLink("Пользователи", "Index", "Manage")</li>
+                }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Logout", "Account")">Выйти</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - DocStorage</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+@if (User.Identity.IsAuthenticated)
+{
+
+using (Html.BeginForm("Upload", "MyDocs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal fade" id="UploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Загрузить документ</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="InputFile">Загрузить файл</label>
+                        <input type="file" id="InputFile" name="upload">
+                        <p class="help-block">Выберите документа для загрузки.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" value="Загрузить" class="btn btn-success" name="FileUploadSubmit">Загрузить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+}

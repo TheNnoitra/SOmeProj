@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITUniver.Calc.DB", "ITUniver.Calc.DB\ITUniver.Calc.DB.csproj", "{EA765E13-6DFF-461D-B906-EC0A4BCEB654}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITUniver.Calc.WebCalc", "WebCalc\ITUniver.Calc.WebCalc.csproj", "{A35D4297-39C5-475D-80E7-EA5FBDD20CFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA765E13-6DFF-461D-B906-EC0A4BCEB654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA765E13-6DFF-461D-B906-EC0A4BCEB654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA765E13-6DFF-461D-B906-EC0A4BCEB654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA765E13-6DFF-461D-B906-EC0A4BCEB654}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A35D4297-39C5-475D-80E7-EA5FBDD20CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A35D4297-39C5-475D-80E7-EA5FBDD20CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A35D4297-39C5-475D-80E7-EA5FBDD20CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A35D4297-39C5-475D-80E7-EA5FBDD20CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\bin\Debug\App_Data\CalcDB.mdf
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\bin\Debug\App_Data\CalcDB_log.ldf
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\bin\Debug\ITUniver.Calc.DB.dll
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\bin\Debug\ITUniver.Calc.DB.pdb
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\bin\Debug\Iesi.Collections.dll
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\bin\Debug\NHibernate.dll
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\bin\Debug\Iesi.Collections.xml
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\bin\Debug\NHibernate.xml
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\obj\Debug\ITUniver.Calc.DB.csprojResolveAssemblyReference.cache
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\obj\Debug\ITUniver.Calc.DB.dll
+C:\Users\Asus_PC\Desktop\BlockchainCalculator-MVC\ITUniver.Calc.DB\obj\Debug\ITUniver.Calc.DB.pdb

@@ -1,0 +1,120 @@
+﻿@model IEnumerable<ITUniver.Calc.DB.Models.Doc>
+
+@{
+    ViewBag.Title = "Мои документы";
+}
+<div class="row top-buffer">
+
+    <h2>Список моих документов</h2>
+
+    </div>
+<hr>
+
+<h3>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Загрузить новый документ
+    </button>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NewDocumentModal">
+        Новый документ
+    </button>
+</h3>
+
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DocName)
+            </th>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PubDate)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocName)
+                </td>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PubDate)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" value="Download" onclick="location.href='@Url.Action("Download", new {id = item.Id})'">
+                        <span class="glyphicon glyphicon-download" aria-hidden="true"> Download</span>
+                    </button> |    |    |
+                    @Html.ActionLink("удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm ('Вы уверены?');" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @section Scripts {
+        @Scripts.Render("~/Scripts/modal.js")
+    }
+
+
+@using (Html.BeginForm("Upload", "MyDocs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Загрузить документ</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="InputFile">Загрузить файл</label>
+                        <input type="file" id="InputFile" name="upload">
+                        <p class="help-block">Выберите документа для загрузки.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" value="Загрузить" class="btn btn-success" name="FileUploadSubmit">Загрузить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("NewDocument", "MyDocs", FormMethod.Post))
+{
+
+@Html.AntiForgeryToken()
+<div class="modal fade" id="NewDocumentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Загрузить документ</h4>
+            </div>
+            <div class="modal-body">
+
+                @Html.Action("NewDocument")
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button type="submit" value="Загрузить" class="btn btn-success" name="SaveNewSubmit">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+}

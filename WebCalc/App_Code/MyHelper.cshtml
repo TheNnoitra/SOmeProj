@@ -1,0 +1,22 @@
+﻿@helper Button(string name)
+{
+    <button class="btn btn-success">
+        @(name.ToUpper())
+    </button>
+}
+
+@helper Submit(string name)
+{
+    <input type="submit" 
+           class="btn btn-success" 
+           value="@(name.ToUpper())" 
+           />
+}
+
+@helper ButtonJs(string name, string click)
+{
+    <button class="btn btn-success" onclick="@(click);return false;">
+        @(name.ToUpper())
+    </button>
+}
+

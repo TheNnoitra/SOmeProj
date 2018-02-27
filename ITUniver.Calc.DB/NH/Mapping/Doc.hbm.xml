@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="ITUniver.Calc.DB.Models" assembly="ITUniver.Calc.DB">
+
+  <class name="Doc" table="[Doc]">
+
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    <property name="DocName"/>
+    <property name="Author"/>
+    <property name="PubDate"/>
+    <property name="DocType" />
+    <property name="DocStatus" />
+    <property name="DocPath" />
+
+  </class>
+
+</hibernate-mapping>

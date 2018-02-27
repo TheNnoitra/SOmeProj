@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ITUniver.Calc.DB.Models.Doc>
+
+@{
+    ViewBag.Title = "AllDocs";
+}
+<form class="navbar-form navbar-left">
+    <h4>Все документы</h4>
+</form>
+
+
+<form class="navbar-form navbar-right" method="post" action="~/MyDocs/AllDocs" id="For">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" name="name" id="Ser">
+    </div>
+    <button type="submit" class="btn btn-default" location.href='@Url.Action("AllDocs")'>Поиск</button>
+</form>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            Название документа
+            <button type="button" class="btn btn-sm" aria-label="Left Align" onclick="location.href='@Url.Action("AllDocs", new { s = "name"})'">
+                <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-sm" aria-label="Left Align" onclick="location.href='@Url.Action("AllDocs", new { s = "eman"})'">
+                <span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true"></span>
+            </button>
+        </th>
+        <th>
+            Автор
+            <button type="button" class="btn btn-sm" aria-label="Left Align" onclick="location.href='@Url.Action("AllDocs", new { s = "author"})'">
+                <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-sm" aria-label="Left Align" onclick="location.href='@Url.Action("AllDocs", new { s = "rohtua"})'">
+                <span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true"></span>
+            </button>
+        </th>
+        <th>
+            Дата публикации
+            <button type="button" class="btn btn-sm" aria-label="Left Align" onclick="location.href='@Url.Action("AllDocs", new { s = "date"})'">
+                <span class="glyphicon glyphicon-sort-by-order" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-sm" aria-label="Left Align" onclick="location.href='@Url.Action("AllDocs", new { s = "etad"})'">
+                <span class="glyphicon glyphicon-sort-by-order-alt" aria-hidden="true"></span>
+            </button>
+        </th>
+        <th>
+            Type
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <row>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PubDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocType)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" value="Download" onclick="location.href='@Url.Action("Download", new {id = item.Id})'">
+                        <span class="glyphicon glyphicon-download" aria-hidden="true"> Скачать</span>
+                    </button>
+
+                    @if (item.DocType.Contains("text") == true)
+                    {
+                    <button type = "button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#@item.Id" data-whatever="@item.Id">Открыть документ</button>
+                    }
+                        <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="exampleModalLabel">@item.DocName</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        @Html.Action("OpenDoc", new { id = item.Id })
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </td>
+            </row>
+        </tr>
+    }
+
+</table>
